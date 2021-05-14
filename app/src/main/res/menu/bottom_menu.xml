@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nhap"
+        android:title="nhập"
+        android:icon="@drawable/edit"
+        />
+    <item
+        android:id="@+id/lich"
+        android:title="lịch"
+        android:icon="@drawable/calendar"/>
+    <item
+        android:id="@+id/khac"
+        android:title="khác"
+        android:icon="@drawable/menu"/>
+</menu>
