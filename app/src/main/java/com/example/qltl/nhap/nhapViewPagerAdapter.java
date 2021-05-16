@@ -6,10 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.qltl.fragment.input_output;
-import com.example.qltl.fragment.khac;
-import com.example.qltl.fragment.lich;
-
 public class nhapViewPagerAdapter extends FragmentStatePagerAdapter {
     public nhapViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@android:color/white"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.input_output"
+    tools:context=".nhap.input_output"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 

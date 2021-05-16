@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.qltl.nhap.input_output;
+
 public class viewPagerAdapter extends FragmentStatePagerAdapter {
     public viewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

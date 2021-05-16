@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".CALENDAR.AlarmReceiver"
+        <receiver android:name=".fragment.CALENDAR.AlarmReceiver"
             android:exported="true"
             android:enabled="true">
 

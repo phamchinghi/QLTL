@@ -1,4 +1,4 @@
-package com.example.qltl.CALENDAR;
+package com.example.qltl.fragment.CALENDAR;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

@@ -2,23 +2,19 @@ package com.example.qltl;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.qltl.fragment.input_output;
-import com.example.qltl.fragment.khac;
-import com.example.qltl.fragment.lich;
 import com.example.qltl.fragment.viewPagerAdapter;
+import com.example.qltl.widget.customViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
+    private customViewPager viewPager;
     private BottomNavigationView bottomNav;
 
     @Override
@@ -32,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter adapter = new viewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
+        viewPager.setPagingEnable(false);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

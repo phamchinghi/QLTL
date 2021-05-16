@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qltl.R;
-import com.example.qltl.fragment.input_output;
 
 public class fragmentThu extends input_output {
 
