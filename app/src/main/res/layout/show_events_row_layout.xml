@@ -53,7 +53,7 @@
                 android:id="@+id/alarmmeBtn"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_action_off"
+                android:src="@drawable/ic_action_on"
                 android:background="@color/design_default_color_on_primary"/>
 
             <Button
