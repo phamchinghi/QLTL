@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         bottomNav.getMenu().findItem(R.id.khac).setChecked(true);
                         break;
+                    default:
+                        bottomNav.getMenu().findItem(R.id.nhap).setChecked(true);
                 }
             }
 
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.khac:
                         viewPager.setCurrentItem(2);
                         break;
+                    default:
+                        viewPager.setCurrentItem(0);
                 }
                 return true;
             }

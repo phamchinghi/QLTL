@@ -13,7 +13,7 @@
         android:layout_margin="20dp"
         android:background="@android:color/white"
         android:gravity="center"
-        android:hint="Type Event"
+        android:hint="Nhập công việc"
         android:inputType="textShortMessage"
         tools:ignore="HardcodedText"
         android:autofillHints=""
@@ -66,10 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
-        android:text="Add Event"
+        android:background="@drawable/custom_button_menu"
+        android:text="Thêm công việc"
         android:textAllCaps="false"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 

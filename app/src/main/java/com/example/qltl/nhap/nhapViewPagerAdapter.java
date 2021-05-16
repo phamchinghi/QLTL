@@ -23,7 +23,6 @@ public class nhapViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new fragmentThu();
             case 1:
                 return new fragmentChi();
-
             default:
                 return new fragmentThu();
         }

@@ -12,16 +12,18 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
         app:tabBackground="@drawable/custom_chip"
         app:tabIndicator="@drawable/custom_chip"
         app:tabIndicatorAnimationDuration="500"
-        app:tabIndicatorColor="#5FB1F8"
+        app:tabIndicatorColor="#C8E1F3"
         app:tabIndicatorGravity="bottom"
         app:tabMode="fixed"
         app:tabRippleColor="@color/white"
         app:tabTextColor="@color/black"
-        app:tabUnboundedRipple="true">
+        app:tabUnboundedRipple="true"
+        >
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -34,26 +36,40 @@
             android:text="Chi" />
     </com.google.android.material.tabs.TabLayout>
 
-    <android.widget.Button
-        android:id="@+id/btn_list"
+    <Spinner
+        android:id="@+id/spin_thu_chi"
+        style="@style/Widget.AppCompat.Spinner"
         android:layout_width="150dp"
-        android:layout_height="35dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/tab_layout"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="130dp"
+        android:layout_centerInParent="true"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        android:text="Chọn"
-        android:background="@drawable/custom_button_menu"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textAppearance="@android:style/TextAppearance.Widget.Button"
+        android:background="@drawable/spinner_backgroud"
+        android:popupBackground="@drawable/spinner_backgroud"
+        android:popupElevation="5dp"
+        android:stateListAnimator="@drawable/spinner_animation"
+        android:textAlignment="center"
         />
 
     <com.example.qltl.widget.customViewPager
         android:id="@+id/nhap_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btn_list"/>
+        android:layout_below="@+id/spin_thu_chi">
+
+
+    </com.example.qltl.widget.customViewPager>
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spin_thu_chi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="309dp"
+        android:layout_marginTop="-27dp"
+        android:layout_marginEnd="43dp"
+        android:text="TextView" />
 
 </RelativeLayout>
