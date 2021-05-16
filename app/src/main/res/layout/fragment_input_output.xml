@@ -39,8 +39,8 @@
     <Spinner
         android:id="@+id/spin_thu_chi"
         style="@style/Widget.AppCompat.Spinner"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/tab_layout"
         android:layout_centerInParent="true"
         android:layout_marginTop="2dp"
@@ -60,16 +60,6 @@
 
     </com.example.qltl.widget.customViewPager>
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spin_thu_chi"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="309dp"
-        android:layout_marginTop="-27dp"
-        android:layout_marginEnd="43dp"
-        android:text="TextView" />
+
 
 </RelativeLayout>

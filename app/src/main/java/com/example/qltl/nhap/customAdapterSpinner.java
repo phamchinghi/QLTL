@@ -23,11 +23,12 @@ public class customAdapterSpinner extends BaseAdapter {
         this.context = context;
         this.icons = icons;
         this.names = names;
+        inflter = (LayoutInflater.from(context));
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return icons.length;
     }
 
     @Override
@@ -43,8 +44,8 @@ public class customAdapterSpinner extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewgroup) {
         view = inflter.inflate(R.layout.custom_spinner_item_thuchi, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.iv_custom_spinner);
-        TextView name = (TextView) view.findViewById(R.id.txt_custom_spinner);
+        ImageView icon = (ImageView) view.findViewById(R.id.imageView_thuchi);
+        TextView name = (TextView) view.findViewById(R.id.textView_thuchi);
         icon.setImageResource(icons[position]);
         name.setText(names[position]);
         return view;

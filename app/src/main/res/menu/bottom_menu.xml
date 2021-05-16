@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nhap"
         android:title="nhập"
+        android:orderInCategory="1"
         android:icon="@drawable/edit"
+        app:showAsAction="always"
+
         />
     <item
         android:id="@+id/lich"
         android:title="lịch"
-        android:icon="@drawable/calendar"/>
+        android:orderInCategory="2"
+        android:icon="@drawable/calendar"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/khac"
         android:title="khác"
-        android:icon="@drawable/menu"/>
+        android:orderInCategory="3"
+        android:icon="@drawable/menu"
+        app:showAsAction="always"/>
 </menu>
