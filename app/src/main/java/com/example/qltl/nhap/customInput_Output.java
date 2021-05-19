@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -37,7 +38,15 @@ public class customInput_Output extends LinearLayout {
     private TabLayout tabLayout;
     private customViewPager viewPager;
     private Button btnList;
+    private EditText khachHang;
+    private EditText edtLoai;
+    private EditText edtGiaMua;
+    private EditText edtSdt;
+    private EditText edtDiachi;
+    private Button btnCancel;
+    private  Button btnYes;
     Context context;
+
 
     public customInput_Output(Context context) {
         super(context);
@@ -68,9 +77,24 @@ public class customInput_Output extends LinearLayout {
     private void createPopupMenu() {
         PopupMenu popupMenu = new PopupMenu(context, btnList);
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                createDialog();
+                switch (item.getItemId()){
+                    case R.id.tom:
+                        createDialog();
+                        edtLoai.setHint("Loại "+item.getTitle());
+                        break;
+                    case R.id.cua:
+                        createDialog();
+                        edtLoai.setHint("Loại "+item.getTitle());
+                        break;
+                    case R.id.ca:
+                        createDialog();
+                        edtLoai.setHint("Loại "+item.getTitle());
+                        break;
+                }
+
                 return true;
             }
         });
@@ -81,16 +105,29 @@ public class customInput_Output extends LinearLayout {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         ViewGroup viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_input, viewGroup, false);
+        khachHang = dialogView.findViewById(R.id.edt_ten);
+        edtLoai = dialogView.findViewById(R.id.edt_loai);
+        edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
+        edtSdt = dialogView.findViewById(R.id.edt_sdt);
+        edtDiachi = dialogView.findViewById(R.id.edt_dia_chi);
+        btnCancel = dialogView.findViewById(R.id.btn_cancel);
+        btnYes = dialogView.findViewById(R.id.btn_yes);
+
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
-        dialogView.setBackgroundResource(R.drawable.bg_dialog_in_output);
         if(Gravity.BOTTOM == getGravity()){
             alertDialog.setCancelable(true);
         }else{
             alertDialog.setCancelable(false);
         }
-
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
    
 }
