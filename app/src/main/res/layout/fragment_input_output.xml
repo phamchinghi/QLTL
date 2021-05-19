@@ -5,60 +5,10 @@
     android:layout_width="match_parent"
     android:background="@android:color/white"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".nhap.input_output"
+    tools:context=".MainActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        app:tabBackground="@drawable/custom_chip"
-        app:tabIndicator="@drawable/custom_chip"
-        app:tabIndicatorAnimationDuration="500"
-        app:tabIndicatorColor="#C8E1F3"
-        app:tabIndicatorGravity="bottom"
-        app:tabMode="fixed"
-        app:tabRippleColor="@color/white"
-        app:tabTextColor="@color/black"
-        app:tabUnboundedRipple="true"
-        >
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thu" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chi" />
-    </com.google.android.material.tabs.TabLayout>
-
-    <Spinner
-        android:id="@+id/spin_thu_chi"
-        style="@style/Widget.AppCompat.Spinner"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/tab_layout"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/spinner_backgroud"
-        android:popupBackground="@drawable/spinner_backgroud"
-        android:popupElevation="5dp"
-        android:stateListAnimator="@drawable/spinner_animation"
-        android:textAlignment="center"
-        />
-
-    <com.example.qltl.widget.customViewPager
-        android:id="@+id/nhap_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/spin_thu_chi">
-
-
-    </com.example.qltl.widget.customViewPager>
 
 
 

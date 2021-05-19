@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
-//Disable vuot 2 cai tabitem
 
 public class customViewPager extends ViewPager {
 
@@ -33,7 +32,7 @@ public class customViewPager extends ViewPager {
         }
         return false;
     }
-    //ham khong cho viet
+    //ham khong cho vuot trai phai
     public void setPagingEnable(Boolean enable){
         this.enable = enable;
     }

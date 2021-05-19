@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.qltl.fragment.CALENDAR.lich;
 import com.example.qltl.nhap.input_output;
 
 public class viewPagerAdapter extends FragmentStatePagerAdapter {

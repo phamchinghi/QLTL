@@ -10,16 +10,18 @@ import android.widget.TextView;
 
 import com.example.qltl.R;
 
+import java.util.ArrayList;
+
 public class customAdapterSpinner extends BaseAdapter {
     Context context;
-    int icons[];
-    String[] names;
+    ArrayList<Integer> icons;
+    ArrayList<String> names;
     LayoutInflater inflter;
 
     public customAdapterSpinner() {
     }
 
-    public customAdapterSpinner(Context context, int[] icons, String[] names) {
+    public customAdapterSpinner(Context context, ArrayList<Integer> icons, ArrayList<String> names) {
         this.context = context;
         this.icons = icons;
         this.names = names;
@@ -28,7 +30,7 @@ public class customAdapterSpinner extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return icons.length;
+        return icons.size();
     }
 
     @Override
@@ -46,8 +48,8 @@ public class customAdapterSpinner extends BaseAdapter {
         view = inflter.inflate(R.layout.custom_spinner_item_thuchi, null);
         ImageView icon = (ImageView) view.findViewById(R.id.imageView_thuchi);
         TextView name = (TextView) view.findViewById(R.id.textView_thuchi);
-        icon.setImageResource(icons[position]);
-        name.setText(names[position]);
+        icon.setImageResource(icons.get(position));
+        name.setText(names.get(position));
         return view;
     }
 }

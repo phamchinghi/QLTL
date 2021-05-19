@@ -2,11 +2,14 @@
     <string name="app_name">QLTL</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tom">Tôm</string>
-    <string name="cua">Cua</string>
-    <string name="ca">Cá</string>
-    <string name="so">Sò</string>
-    <string name="ngheu">Nghêu</string>
-    <string name="luon">Lươn</string>
-    <string name="muc">Mực</string>
+
+    <string-array name="seafood">
+        <item name="tom">Tôm</item>
+        <item name="cua">Cua</item>
+        <item name="ca">Cá</item>
+        <item name="so">Sò</item>
+        <item name="ngheu">Nghêu</item>
+        <item name="luon">Lươn</item>
+        <item name="muc">Mực</item>
+    </string-array>
 </resources>

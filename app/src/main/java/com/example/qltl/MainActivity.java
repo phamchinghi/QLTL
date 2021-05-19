@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.qltl.fragment.viewPagerAdapter;
+import com.example.qltl.nhap.input_output;
 import com.example.qltl.widget.customViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -77,5 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+//
+//        input_output fragment = new input_output();
+//
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.container, fragment, "inoutputFragment");
+//        transaction.commit();
     }
 }
