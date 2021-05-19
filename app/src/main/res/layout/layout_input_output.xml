@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
@@ -30,27 +31,27 @@
             android:text="Chi" />
     </com.google.android.material.tabs.TabLayout>
 
-    <Spinner
-        android:id="@+id/spin_thu_chi"
-        style="@style/Widget.AppCompat.Spinner"
-        android:layout_width="100dp"
+    <android.widget.Button
+        android:id="@+id/btnList"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_below="@+id/tab_layout"
-        android:layout_centerInParent="true"
         android:layout_marginTop="2dp"
-        android:background="@drawable/spinner_backgroud"
-        android:popupBackground="@drawable/spinner_backgroud"
-        android:popupElevation="5dp"
-        android:stateListAnimator="@drawable/spinner_animation"
-        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_button_menu"
+        android:drawableLeft="@drawable/ic_add"
+        android:padding="5dp"
+        android:text="Thêm mới"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
         />
 
     <com.example.qltl.widget.customViewPager
         android:id="@+id/nhap_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/spin_thu_chi">
+        >
 
 
     </com.example.qltl.widget.customViewPager>
-</RelativeLayout>
+</LinearLayout>

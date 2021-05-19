@@ -53,20 +53,17 @@ public class customDialog extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-//        btnYes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getContext().getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext().getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
+            }
+        });
         getDialog().getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         getDialog().show();
 
         return view;
     }
 
-    public void setHint(String str){
-        edtLoai.setHint(str);
-    }
 
 }

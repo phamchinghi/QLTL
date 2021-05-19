@@ -1,5 +1,8 @@
 package com.example.qltl.nhap;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.PopupMenu;
@@ -11,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -30,7 +35,8 @@ public class input_output extends Fragment {
 
     private static final String TAG = "inoutputFragment";
 
-
+    private TabLayout tabLayout;
+    private customViewPager viewPager;
     public input_output() {
     }
 
@@ -40,48 +46,13 @@ public class input_output extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_input_output, container, false);
-
-
+        tabLayout = view.findViewById(R.id.tab_layout);
+        viewPager = view.findViewById(R.id.nhap_view_pager);
+        nhapViewPagerAdapter adapterViewPager = new nhapViewPagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPager.setAdapter(adapterViewPager);
+        viewPager.setPagingEnable(false);
+        tabLayout.setupWithViewPager(viewPager);
         return view;
     }
-//    private void dropDownSpinner(){
-//        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                openDetailDialog(Gravity.CENTER);
-////                setHint(spin.getSelectedItem().toString());
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//    }
-
-//    private void openDetailDialog(int gravity){
-////        final Dialog dialog = new Dialog(getContext().getApplicationContext());
-////        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-////        dialog.setContentView(R.layout.custom_dialog_input);
-////        Window window = dialog.getWindow();
-////        if(window == null){
-////            return;
-////        }
-////        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-////        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-////
-////        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-////        windowAttributes.gravity = gravity;
-////        window.setAttributes(windowAttributes);
-////
-//        customDialog dialog = new customDialog();
-//        if(Gravity.BOTTOM == gravity){
-//            dialog.setCancelable(true);
-//        }else {
-//            dialog.setCancelable(false);
-//        }
-//        dialog.setTargetFragment(input_output.this, 1);
-//        dialog.show(getFragmentManager(), "customDialog");
-//    }
 
 }
