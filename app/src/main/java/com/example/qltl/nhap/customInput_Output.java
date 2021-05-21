@@ -16,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -43,8 +45,12 @@ public class customInput_Output extends LinearLayout {
     private EditText edtGiaMua;
     private EditText edtSdt;
     private EditText edtDiachi;
+    private EditText edt_con_kg;
+    private EditText edt_tim_kiem;
+    private ImageButton imgBtn_search;
     private Button btnCancel;
     private  Button btnYes;
+    private  Button btnThongBao;
     Context context;
 
 
@@ -56,7 +62,6 @@ public class customInput_Output extends LinearLayout {
         super(context, attrs);
         this.context = context;
         IntializeUILayout();
-        createPopupMenu();
 
         btnList.setOnClickListener(new OnClickListener() {
             @Override
@@ -64,6 +69,19 @@ public class customInput_Output extends LinearLayout {
                 createPopupMenu();
             }
         });
+        //su kien cho nut tim kiem
+        imgBtn_search.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String value = edt_tim_kiem.getText().toString();
+                if(value.length() == 0) {
+                    createDialogThongbao();
+                }else{
+                    createDialog();
+                }
+            }
+        });
+
     }
 
     private void IntializeUILayout(){
@@ -72,7 +90,8 @@ public class customInput_Output extends LinearLayout {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.nhap_view_pager);
         btnList = view.findViewById(R.id.btnList);
-
+        edt_tim_kiem = view.findViewById(R.id.edt_tim_kiem);
+        imgBtn_search = view.findViewById(R.id.imgBtn_search);
     }
     private void createPopupMenu() {
         PopupMenu popupMenu = new PopupMenu(context, btnList);
@@ -82,17 +101,20 @@ public class customInput_Output extends LinearLayout {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.tom:
-                        createDialog();
-                        edtLoai.setHint("Loại "+item.getTitle());
-                        break;
                     case R.id.cua:
-                        createDialog();
-                        edtLoai.setHint("Loại "+item.getTitle());
-                        break;
                     case R.id.ca:
+                    case R.id.so:
+                    case R.id.muc:
                         createDialog();
                         edtLoai.setHint("Loại "+item.getTitle());
                         break;
+                    case R.id.ngheu:
+                    case R.id.luon:
+                        createDialog();
+                        edt_con_kg.setVisibility(GONE);
+                        edtLoai.setVisibility(GONE);
+                        break;
+                    default:
                 }
 
                 return true;
@@ -110,6 +132,7 @@ public class customInput_Output extends LinearLayout {
         edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
         edtSdt = dialogView.findViewById(R.id.edt_sdt);
         edtDiachi = dialogView.findViewById(R.id.edt_dia_chi);
+        edt_con_kg = dialogView.findViewById(R.id.con_kg);
         btnCancel = dialogView.findViewById(R.id.btn_cancel);
         btnYes = dialogView.findViewById(R.id.btn_yes);
 
@@ -123,6 +146,28 @@ public class customInput_Output extends LinearLayout {
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
         btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+    private void createDialogThongbao(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_thongbao, viewGroup, false);
+
+        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+
+
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
+        alertDialog.show();
+
+        btnThongBao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();

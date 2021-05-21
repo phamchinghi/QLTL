@@ -4,15 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
         app:tabBackground="@drawable/custom_chip"
-        app:tabIndicator="@drawable/custom_chip"
         app:tabIndicatorAnimationDuration="500"
-        app:tabIndicatorColor="#C8E1F3"
+        app:tabIndicator="@drawable/custom_tabitem"
+        app:tabIndicatorColor="@color/light_blue"
         app:tabIndicatorGravity="bottom"
         app:tabMode="fixed"
         app:tabRippleColor="@color/white"
@@ -23,28 +24,66 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thu" />
+            android:text="@string/thu" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chi" />
+            android:text="@string/chi" />
     </com.google.android.material.tabs.TabLayout>
 
-    <android.widget.Button
-        android:id="@+id/btnList"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_below="@+id/tab_layout"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/custom_button_menu"
-        android:drawableLeft="@drawable/ic_add"
-        android:padding="5dp"
-        android:text="Thêm mới"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
-        />
+        android:layout_marginBottom="2dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:layout_marginStart="110dp"
+>
+
+            <EditText
+                android:id="@+id/edt_tim_kiem"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="@string/tim_kiem"
+                android:inputType="text"
+                android:padding="10dp"
+                android:layout_gravity="left"
+                />
+
+            <ImageButton
+                android:id="@+id/imgBtn_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_search"
+                android:layout_gravity="right"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/btnList"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/custom_button_menu"
+            android:drawableStart="@drawable/ic_add"
+            android:padding="5dp"
+            android:text="@string/them_moi"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
 
     <com.example.qltl.widget.customViewPager
         android:id="@+id/nhap_view_pager"
@@ -54,4 +93,5 @@
 
 
     </com.example.qltl.widget.customViewPager>
+
 </LinearLayout>

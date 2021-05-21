@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_in_output"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
+    <TextView
+        android:id="@+id/txt_thongbao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_top_dialog_in_output"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="THÔNG BÁO"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txt_noi_dung_thongbao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vui lòng nhập thông tin cần tìm!"
+        android:textColor="#FF0000"
+        android:padding="16dp"
+        android:textSize="20sp"
+        android:gravity="center"
+
+        />
+
+    <android.widget.Button
+        android:id="@+id/btn_thongbao_ok"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="@string/ok"
+        android:background="@drawable/custom_chip"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:layout_marginBottom="5dp"/>
+
+
+</LinearLayout>
