@@ -1,10 +1,13 @@
 package com.example.qltl.nhap;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -40,7 +44,7 @@ public class customInput_Output extends LinearLayout {
     private TabLayout tabLayout;
     private customViewPager viewPager;
     private Button btnList;
-    private EditText khachHang;
+    private EditText edt_khachHang;
     private EditText edtLoai;
     private EditText edtGiaMua;
     private EditText edtSdt;
@@ -62,7 +66,7 @@ public class customInput_Output extends LinearLayout {
         super(context, attrs);
         this.context = context;
         IntializeUILayout();
-
+        customDialog customDialog = new customDialog(context);
         btnList.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +85,6 @@ public class customInput_Output extends LinearLayout {
                 }
             }
         });
-
     }
 
     private void IntializeUILayout(){
@@ -98,6 +101,7 @@ public class customInput_Output extends LinearLayout {
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @SuppressLint("NonConstantResourceId")
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.tom:
@@ -127,7 +131,7 @@ public class customInput_Output extends LinearLayout {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         ViewGroup viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_input, viewGroup, false);
-        khachHang = dialogView.findViewById(R.id.edt_ten);
+        edt_khachHang = dialogView.findViewById(R.id.edt_ten);
         edtLoai = dialogView.findViewById(R.id.edt_loai);
         edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
         edtSdt = dialogView.findViewById(R.id.edt_sdt);
@@ -138,11 +142,7 @@ public class customInput_Output extends LinearLayout {
 
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
-        if(Gravity.BOTTOM == getGravity()){
-            alertDialog.setCancelable(true);
-        }else{
-            alertDialog.setCancelable(false);
-        }
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
         btnCancel.setOnClickListener(new OnClickListener() {
@@ -151,6 +151,34 @@ public class customInput_Output extends LinearLayout {
                 alertDialog.dismiss();
             }
         });
+        btnYes.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(edtLoai.getVisibility() == VISIBLE && edt_con_kg.getVisibility() == VISIBLE) {
+                    if (edt_khachHang.getText().toString().length() == 0
+                            || edtSdt.getText().toString().length() == 0
+                            || edtDiachi.getText().toString().length() == 0
+                            || edtLoai.getText().toString().length() == 0
+                            || edtGiaMua.getText().toString().length() == 0
+                            || edt_con_kg.getText().toString().length() == 0) {
+                        createDialogThongbaoDienThongTin();
+                    }else{
+                        //Goi cai activity moi ra
+                        alertDialog.dismiss();
+                    }
+                }else {
+                    if(edt_khachHang.getText().toString().length() == 0
+                            || edtSdt.getText().toString().length() == 0
+                            || edtDiachi.getText().toString().length() == 0
+                            || edtGiaMua.getText().toString().length() == 0){
+                        createDialogThongbaoDienThongTin();
+                    }else {
+                        //goi cai activity moi ra
+                    }
+                }
+            }
+        });
+
     }
     private void createDialogThongbao(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -161,8 +189,7 @@ public class customInput_Output extends LinearLayout {
 
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
-
-
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
 
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
@@ -174,5 +201,26 @@ public class customInput_Output extends LinearLayout {
             }
         });
     }
-   
+
+    private void createDialogThongbaoDienThongTin(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_thongbao_dienthongtin, viewGroup, false);
+
+        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());//set khong cho bam ra phia ngoai dialog
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
+        alertDialog.show();
+
+        btnThongBao.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
 }

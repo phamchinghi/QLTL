@@ -1,5 +1,8 @@
 package com.example.qltl.nhap;
 
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,7 +13,7 @@ public class nhapViewPagerAdapter extends FragmentStatePagerAdapter {
     public nhapViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
-
+    Button btn;
     @NonNull
     @Override
     public Fragment getItem(int position) {

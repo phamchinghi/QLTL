@@ -2,8 +2,10 @@ package com.example.qltl.nhap;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,53 +23,31 @@ import com.example.qltl.R;
 
 public class customDialog extends LinearLayout {
 
-    private EditText khachHang;
+    private EditText edt_khachHang;
     private EditText edtLoai;
     private EditText edtGiaMua;
     private EditText edtSdt;
     private EditText edtDiachi;
+    private EditText edt_con_kg;
     private Button btnCancel;
     private  Button btnYes;
+    private Button btnThongBao;
     Context context;
 
     public customDialog(Context context) {
         super(context);
     }
 
-    public customDialog(Context context, EditText khachHang, EditText edtLoai, EditText edtGiaMua, EditText edtSdt, EditText edtDiachi, Button btnCancel, Button btnYes, Context context1) {
-        super(context);
-        this.khachHang = khachHang;
-        this.edtLoai = edtLoai;
-        this.edtGiaMua = edtGiaMua;
-        this.edtSdt = edtSdt;
-        this.edtDiachi = edtDiachi;
-        this.btnCancel = btnCancel;
-        this.btnYes = btnYes;
+    public customDialog(Context context, @Nullable AttributeSet attrs, Context context1) {
+        super(context, attrs);
         this.context = context1;
         IntializeUILayout();
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        btnYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext().getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
-            }
-        });
-//        getDialog().getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
-//        getDialog().show();
-
-//        return view;
     }
 
     private void IntializeUILayout(){
         LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.custom_dialog_input,this);
-        khachHang = view.findViewById(R.id.edt_ten);
+        edt_khachHang = view.findViewById(R.id.edt_ten);
         edtLoai = view.findViewById(R.id.edt_loai);
         edtGiaMua = view.findViewById(R.id.edt_gia_mua);
         edtSdt = view.findViewById(R.id.edt_sdt);
@@ -75,11 +55,6 @@ public class customDialog extends LinearLayout {
         btnCancel = view.findViewById(R.id.btn_cancel);
         btnYes = view.findViewById(R.id.btn_yes);
     }
-    private void getDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_input, viewGroup, false);
 
 
-    }
 }

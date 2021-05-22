@@ -79,11 +79,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-//
-//        input_output fragment = new input_output();
-//
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.container, fragment, "inoutputFragment");
-//        transaction.commit();
     }
 }
