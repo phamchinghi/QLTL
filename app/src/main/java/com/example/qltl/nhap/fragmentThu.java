@@ -1,5 +1,6 @@
 package com.example.qltl.nhap;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -10,11 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.qltl.R;
 
+
 public class fragmentThu extends Fragment {
-
-    public fragmentThu() {
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

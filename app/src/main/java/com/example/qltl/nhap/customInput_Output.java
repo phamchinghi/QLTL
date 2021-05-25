@@ -2,42 +2,23 @@ package com.example.qltl.nhap;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import com.example.qltl.MainActivity;
 import com.example.qltl.R;
 import com.example.qltl.widget.customViewPager;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
 
 public class customInput_Output extends LinearLayout {
 
@@ -55,8 +36,24 @@ public class customInput_Output extends LinearLayout {
     private Button btnCancel;
     private  Button btnYes;
     private  Button btnThongBao;
+    customThu customThu;
     Context context;
 
+    public String getEdtLoai() {
+        return edtLoai.getText().toString();
+    }
+
+    public void setEdtLoai(EditText edtLoai) {
+        this.edtLoai = edtLoai;
+    }
+
+    public String getEdt_khachHang() {
+        return edt_khachHang.getText().toString();
+    }
+
+    public void setEdt_khachHang(EditText edt_khachHang) {
+        this.edt_khachHang = edt_khachHang;
+    }
 
     public customInput_Output(Context context) {
         super(context);
@@ -164,6 +161,9 @@ public class customInput_Output extends LinearLayout {
                         createDialogThongbaoDienThongTin();
                     }else{
                         //Goi cai activity moi ra
+                        Intent intent = new Intent(context,ChiTietThuActivity.class);
+                        getContext().startActivity(intent);
+
                         alertDialog.dismiss();
                     }
                 }else {
@@ -174,6 +174,8 @@ public class customInput_Output extends LinearLayout {
                         createDialogThongbaoDienThongTin();
                     }else {
                         //goi cai activity moi ra
+
+
                     }
                 }
             }

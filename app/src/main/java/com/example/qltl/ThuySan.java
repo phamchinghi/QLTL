@@ -1,15 +1,14 @@
 package com.example.qltl;
 
 public class ThuySan {
-    private int resourceId;
-    private String name,tenKH,tongKg,thanhTien,soTien;
+    private int resourceId,tongKg,soTien;
+    private String name,tenKH;
 
-    public ThuySan(int resourceId, String name, String tenKH, String tongKg, String thanhTien, String soTien) {
+    public ThuySan(int resourceId, String name, String tenKH, int tongKg, int soTien) {
         this.resourceId = resourceId;
         this.name = name;
         this.tenKH = tenKH;
         this.tongKg = tongKg;
-        this.thanhTien = thanhTien;
         this.soTien = soTien;
     }
 
@@ -37,27 +36,19 @@ public class ThuySan {
         this.tenKH = tenKH;
     }
 
-    public String getTongKg() {
+    public int getTongKg() {
         return tongKg;
     }
 
-    public void setTongKg(String tongKg) {
+    public void setTongKg(int tongKg) {
         this.tongKg = tongKg;
     }
 
-    public String getThanhTien() {
-        return thanhTien;
-    }
-
-    public void setThanhTien(String thanhTien) {
-        this.thanhTien = thanhTien;
-    }
-
-    public String getSoTien() {
+    public int getSoTien() {
         return soTien;
     }
 
-    public void setSoTien(String soTien) {
-        this.soTien = "0";
+    public void setSoTien(int soTien) {
+        this.soTien = soTien;
     }
 }
