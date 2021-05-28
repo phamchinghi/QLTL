@@ -16,9 +16,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
+import com.example.qltl.MainActivity;
 import com.example.qltl.R;
+import com.example.qltl.ThuySan;
 import com.example.qltl.widget.customViewPager;
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.Serializable;
 
 public class customInput_Output extends LinearLayout {
 
@@ -33,10 +37,9 @@ public class customInput_Output extends LinearLayout {
     private EditText edt_con_kg;
     private EditText edt_tim_kiem;
     private ImageButton imgBtn_search;
-    private Button btnCancel;
-    private  Button btnYes;
-    private  Button btnThongBao;
-    customThu customThu;
+//    private Button btnCancel;
+//    private  Button btnYes;
+//    private  Button btnThongBao;
     Context context;
 
     public String getEdtLoai() {
@@ -55,6 +58,8 @@ public class customInput_Output extends LinearLayout {
         this.edt_khachHang = edt_khachHang;
     }
 
+
+
     public customInput_Output(Context context) {
         super(context);
     }
@@ -63,7 +68,7 @@ public class customInput_Output extends LinearLayout {
         super(context, attrs);
         this.context = context;
         IntializeUILayout();
-        customDialog customDialog = new customDialog(context);
+        customDialog customDialogg = new customDialog(context);
         btnList.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,9 +81,9 @@ public class customInput_Output extends LinearLayout {
             public void onClick(View v) {
                 String value = edt_tim_kiem.getText().toString();
                 if(value.length() == 0) {
-                    createDialogThongbao();
+                   customDialogg.createDialogThongbao();
                 }else{
-                    createDialog();
+                    customDialogg.createDialog();
                 }
             }
         });
@@ -95,6 +100,7 @@ public class customInput_Output extends LinearLayout {
     }
     private void createPopupMenu() {
         PopupMenu popupMenu = new PopupMenu(context, btnList);
+        customDialog customDialogg = new customDialog(context);
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -106,14 +112,14 @@ public class customInput_Output extends LinearLayout {
                     case R.id.ca:
                     case R.id.so:
                     case R.id.muc:
-                        createDialog();
-                        edtLoai.setHint("Loại "+item.getTitle());
+                        customDialogg.createDialog();
+//                        edtLoai.setHint("Loại "+item.getTitle());
                         break;
                     case R.id.ngheu:
                     case R.id.luon:
-                        createDialog();
-                        edt_con_kg.setVisibility(GONE);
-                        edtLoai.setVisibility(GONE);
+                        customDialogg.createDialog();
+//                        edt_con_kg.setVisibility(GONE);
+//                        edtLoai.setVisibility(GONE);
                         break;
                     default:
                 }
@@ -122,107 +128,5 @@ public class customInput_Output extends LinearLayout {
             }
         });
         popupMenu.show();
-    }
-
-    private void createDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_input, viewGroup, false);
-        edt_khachHang = dialogView.findViewById(R.id.edt_ten);
-        edtLoai = dialogView.findViewById(R.id.edt_loai);
-        edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
-        edtSdt = dialogView.findViewById(R.id.edt_sdt);
-        edtDiachi = dialogView.findViewById(R.id.edt_dia_chi);
-        edt_con_kg = dialogView.findViewById(R.id.con_kg);
-        btnCancel = dialogView.findViewById(R.id.btn_cancel);
-        btnYes = dialogView.findViewById(R.id.btn_yes);
-
-        builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
-        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
-        alertDialog.show();
-        btnCancel.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        btnYes.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(edtLoai.getVisibility() == VISIBLE && edt_con_kg.getVisibility() == VISIBLE) {
-                    if (edt_khachHang.getText().toString().length() == 0
-                            || edtSdt.getText().toString().length() == 0
-                            || edtDiachi.getText().toString().length() == 0
-                            || edtLoai.getText().toString().length() == 0
-                            || edtGiaMua.getText().toString().length() == 0
-                            || edt_con_kg.getText().toString().length() == 0) {
-                        createDialogThongbaoDienThongTin();
-                    }else{
-                        //Goi cai activity moi ra
-                        Intent intent = new Intent(context,ChiTietThuActivity.class);
-                        getContext().startActivity(intent);
-
-                        alertDialog.dismiss();
-                    }
-                }else {
-                    if(edt_khachHang.getText().toString().length() == 0
-                            || edtSdt.getText().toString().length() == 0
-                            || edtDiachi.getText().toString().length() == 0
-                            || edtGiaMua.getText().toString().length() == 0){
-                        createDialogThongbaoDienThongTin();
-                    }else {
-                        //goi cai activity moi ra
-
-
-                    }
-                }
-            }
-        });
-
-    }
-    private void createDialogThongbao(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_thongbao, viewGroup, false);
-
-        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
-
-        builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
-
-        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
-        alertDialog.show();
-
-        btnThongBao.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-    }
-
-    private void createDialogThongbaoDienThongTin(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_thongbao_dienthongtin, viewGroup, false);
-
-        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
-
-        builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());//set khong cho bam ra phia ngoai dialog
-
-        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
-        alertDialog.show();
-
-        btnThongBao.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
     }
 }

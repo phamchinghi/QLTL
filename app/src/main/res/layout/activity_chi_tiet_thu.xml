@@ -11,38 +11,124 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="16dp">
 
-        <ImageView
-            android:id="@+id/imagView_chi_tiet_thu"
-            android:layout_width="40dp"
+        <LinearLayout
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            app:srcCompat="@drawable/ic_launcher_background"
-            android:gravity="left"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_chi_tiet_thu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="test"
-            android:gravity="center"/>
+            <TextView
+                android:id="@+id/txt_ten_thuysan_thu"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Loại thủy sản"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="#E3E3E3"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_tenKH"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Tên khách hàng"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="#FFE3E3E3"
+                android:layout_marginTop="2dp"/>
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/imgBtn_apply"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            app:srcCompat="@drawable/check"
-            android:background="@color/white"
             android:layout_gravity="right"
-            />
+            android:layout_weight="0.5"
+            android:background="@color/white"
+            android:src="@drawable/check" />
+
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Giá mua:"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/txt_gia_mua_vao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số kg hiện tại: "
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_tongkg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_sokg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Số kg"
+            />
+
+        <android.widget.Button
+            android:id="@+id/btn_nhap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nhập" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_chitietcan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+
 </LinearLayout>

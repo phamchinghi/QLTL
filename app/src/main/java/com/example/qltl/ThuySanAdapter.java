@@ -39,7 +39,6 @@ public class ThuySanAdapter extends RecyclerView.Adapter<ThuySanAdapter.ThuySanV
     @Override
     public void onBindViewHolder(@NonNull ThuySanViewHolder holder, int position) {
         ThuySan thuySan = listThuySan.get(position);
-        customInput_Output customInput_output = new customInput_Output(context);
         if(thuySan == null){
             return;
         }
@@ -73,9 +72,6 @@ public class ThuySanAdapter extends RecyclerView.Adapter<ThuySanAdapter.ThuySanV
             txtNameCustomer = itemView.findViewById(R.id.txt_tenKH);
             txtTongKhoiLuong = itemView.findViewById(R.id.txt_soluong_da_mua);
             txtGiaTien = itemView.findViewById(R.id.txt_gia_tien);
-
-
-//            itemThuySan.setOnClickListener(onClick(this););
 
         }
 

@@ -56,5 +56,114 @@ public class customDialog extends LinearLayout {
         btnYes = view.findViewById(R.id.btn_yes);
     }
 
+    public void createDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.custom_dialog_input, viewGroup, false);
+        edt_khachHang = dialogView.findViewById(R.id.edt_ten);
+        edtLoai = dialogView.findViewById(R.id.edt_loai);
+        edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
+        edtSdt = dialogView.findViewById(R.id.edt_sdt);
+        edtDiachi = dialogView.findViewById(R.id.edt_dia_chi);
+        edt_con_kg = dialogView.findViewById(R.id.con_kg);
+        btnCancel = dialogView.findViewById(R.id.btn_cancel);
+        btnYes = dialogView.findViewById(R.id.btn_yes);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
+        alertDialog.show();
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        btnYes.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(edtLoai.getVisibility() == VISIBLE && edt_con_kg.getVisibility() == VISIBLE) {
+                    if (edt_khachHang.getText().toString().length() == 0
+                            || edtSdt.getText().toString().length() == 0
+                            || edtDiachi.getText().toString().length() == 0
+                            || edtLoai.getText().toString().length() == 0
+                            || edtGiaMua.getText().toString().length() == 0
+                            || edt_con_kg.getText().toString().length() == 0) {
+                        createDialogThongbaoDienThongTin();
+                    }else{
+                        //Goi cai activity moi ra
+                        Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("tenKH", edt_khachHang.getText().toString());
+                        bundle.putInt("gia", Integer.parseInt(edtGiaMua.getText().toString())); ;
+                        bundle.putString("loai", edtLoai.getText().toString());
+
+                        intent.putExtra("data", bundle);
+                        getContext().startActivity(intent);
+                        alertDialog.dismiss();
+                    }
+                }else {
+                    if(edt_khachHang.getText().toString().length() == 0
+                            || edtSdt.getText().toString().length() == 0
+                            || edtDiachi.getText().toString().length() == 0
+                            || edtGiaMua.getText().toString().length() == 0){
+                        createDialogThongbaoDienThongTin();
+                    }else {
+                        //goi cai activity moi ra
+
+                        Intent intent = new Intent(context,ChiTietThuActivity.class);
+                        getContext().startActivity(intent);
+//                        alertDialog.dismiss();
+                    }
+                }
+            }
+        });
+    }
+
+    public void createDialogThongbao(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.custom_dialog_thongbao, viewGroup, false);
+
+        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
+        alertDialog.show();
+
+        btnThongBao.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    public void createDialogThongbaoDienThongTin(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.custom_dialog_thongbao_dienthongtin, viewGroup, false);
+
+        btnThongBao = dialogView.findViewById(R.id.btn_thongbao_ok);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(Gravity.BOTTOM == getGravity());//set khong cho bam ra phia ngoai dialog
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
+        alertDialog.show();
+
+        btnThongBao.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
 
 }

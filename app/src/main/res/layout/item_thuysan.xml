@@ -15,7 +15,7 @@
         android:id="@+id/img_thuysan"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/ic_shrimp" />
+        android:src="@drawable/ic_launcher_foreground" />
 
     <LinearLayout
         android:layout_width="match_parent"

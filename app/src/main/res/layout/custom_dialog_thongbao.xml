@@ -15,7 +15,7 @@
         android:background="@drawable/bg_top_dialog_in_output"
         android:gravity="center"
         android:padding="10dp"
-        android:text="THÔNG BÁO"
+        android:text="@string/thongbao"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/txt_noi_dung_thongbao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vui lòng nhập thông tin cần tìm!"
+        android:text="@string/thongbaonhap"
         android:textColor="#FF0000"
         android:padding="16dp"
         android:textSize="20sp"

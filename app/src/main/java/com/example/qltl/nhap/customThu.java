@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +18,7 @@ import com.example.qltl.ThuySanAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class customThu extends RelativeLayout {
+public class customThu extends LinearLayout {
     private RecyclerView rcvThuySan;
     private ThuySanAdapter thuySanAdapter;
     Context context;
@@ -40,6 +41,9 @@ public class customThu extends RelativeLayout {
         rcvThuySan = view.findViewById(R.id.recycle_view_thu);
         thuySanAdapter = new ThuySanAdapter(context);
 
+        Intent intent = new Intent();
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL,false);
         rcvThuySan.setLayoutManager(linearLayoutManager);
 
@@ -57,8 +61,6 @@ public class customThu extends RelativeLayout {
 //        list.add(new ThuySan(R.drawable.ic_crab, "Tom su", "Anh nghi", 50000, 12000));
 //        list.add(new ThuySan(R.drawable.ic_clam, "Tom su", "Anh nghi", 50000, 12000));
 //        list.add(new ThuySan(R.drawable.ic_crab, "Tom su", "Anh nghi", 50000, 12000));
-//        list.add(new ThuySan(R.drawable.ic_crab, "Tom su", "Anh nghi", 50000, 12000));
-        list.add(new ThuySan(R.drawable.ic_clam, "Tom su", "Anh nghi", 50000, 12000));
 //        list.add(new ThuySan(R.drawable.ic_crab, "Tom su", "Anh nghi", 50000, 12000));
 //        list.add(new ThuySan(R.drawable.ic_crab, "Tom su", "Anh nghi", 50000, 12000));
 //        list.add(new ThuySan(R.drawable.ic_clam, "Tom su", "Anh nghi", 50000, 12000));

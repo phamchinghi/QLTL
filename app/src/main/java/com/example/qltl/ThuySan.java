@@ -12,6 +12,7 @@ public class ThuySan {
         this.soTien = soTien;
     }
 
+
     public int getResourceId() {
         return resourceId;
     }

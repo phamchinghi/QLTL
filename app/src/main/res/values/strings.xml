@@ -8,6 +8,9 @@
     <string name="tim_kiem">Tìm kiếm</string>
     <string name="thu">Thu</string>
     <string name="chi">Chi</string>
+    <string name="kiemtrathongtin">Vui lòng kiểm tra lại thông tin!</string>
+    <string name="thongbao">THÔNG BÁO</string>
+    <string name="thongbaonhap">Vui lòng nhập thông tin cần tìm!</string>
     <string-array name="seafood">
         <item name="tom">Tôm</item>
         <item name="cua">Cua</item>
