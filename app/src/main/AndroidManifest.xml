@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.qltl">
 
     <application
@@ -9,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QLTL">
         <activity android:name=".nhap.ChiTietThuActivity"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +20,7 @@
         </activity>
 
         <receiver
-            android:name=".fragment.CALENDAR.AlarmReceiver"
+            android:name=".CALENDAR.AlarmReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
     </application>

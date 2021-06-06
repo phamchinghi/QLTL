@@ -97,8 +97,9 @@ public class customDialog extends LinearLayout {
 
                         Bundle bundle = new Bundle();
                         bundle.putString("tenKH", edt_khachHang.getText().toString());
-                        bundle.putInt("gia", Integer.parseInt(edtGiaMua.getText().toString())); ;
+                        bundle.putDouble("gia", Double.parseDouble(edtGiaMua.getText().toString())); ;
                         bundle.putString("loai", edtLoai.getText().toString());
+                        bundle.putInt("conkg", Integer.parseInt(edt_con_kg.getText().toString()));
 
                         intent.putExtra("data", bundle);
                         getContext().startActivity(intent);

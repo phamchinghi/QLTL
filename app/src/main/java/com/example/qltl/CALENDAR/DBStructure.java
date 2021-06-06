@@ -1,4 +1,4 @@
-package com.example.qltl.fragment.CALENDAR;
+package com.example.qltl.CALENDAR;
 
 public class DBStructure {
     public static final String DB_NAME = "EVENTS_DB";

@@ -3,21 +3,29 @@ package com.example.qltl;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.qltl.fragment.viewPagerAdapter;
-import com.example.qltl.nhap.input_output;
+import com.example.qltl.adapter.ThuySanAdapter;
+import com.example.qltl.adapter.viewPagerAdapter;
 import com.example.qltl.widget.customViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private customViewPager viewPager;
     private BottomNavigationView bottomNav;
+    List<ThuySan> list = new ArrayList<>();
+    private RecyclerView rcvThuySan;
+    private ThuySanAdapter thuySanAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +35,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
 
-
         viewPagerAdapter adapter = new viewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
         viewPager.setPagingEnable(false);
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -79,6 +85,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    public void setDataa(){
+        Intent intent1 = getIntent();
+        ThuySan ts1 = (ThuySan) intent1.getSerializableExtra("objTS");
+
+        list.add(ts1);
+        thuySanAdapter = new ThuySanAdapter(this);
+        rcvThuySan = findViewById(R.id.recycle_view_thu);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
+        rcvThuySan.setLayoutManager(linearLayoutManager);
+        thuySanAdapter.setData(list);
+        rcvThuySan.setAdapter(thuySanAdapter);
 
     }
 }

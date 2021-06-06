@@ -1,4 +1,4 @@
-package com.example.qltl;
+package com.example.qltl.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.NumberFormat;
+import com.example.qltl.ChiTietCan;
+import com.example.qltl.R;
+
 import java.util.List;
-import java.util.Locale;
 
 public class ChiTietcanAdapter extends RecyclerView.Adapter<ChiTietcanAdapter.ChiTietCanViewHolder>{
     Context context;

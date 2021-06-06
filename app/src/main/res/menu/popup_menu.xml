@@ -24,10 +24,6 @@
         android:title="Sò"
         />
     <item
-        android:id="@+id/luon"
-        android:title="Lươn"
-        />
-    <item
         android:id="@+id/muc"
         android:title="Mực"
         />

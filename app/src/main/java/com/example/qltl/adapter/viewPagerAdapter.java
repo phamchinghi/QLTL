@@ -1,12 +1,13 @@
-package com.example.qltl.fragment;
+package com.example.qltl.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.qltl.fragment.CALENDAR.lich;
-import com.example.qltl.nhap.input_output;
+import com.example.qltl.CALENDAR.lich;
+import com.example.qltl.fragment.khac;
+import com.example.qltl.input_output;
 
 public class viewPagerAdapter extends FragmentStatePagerAdapter {
     public viewPagerAdapter(@NonNull FragmentManager fm, int behavior) {

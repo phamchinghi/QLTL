@@ -1,24 +1,31 @@
-package com.example.qltl.nhap;
+package com.example.qltl.CALENDAR;
 
-import android.content.Context;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-
 import com.example.qltl.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class lich extends Fragment {
 
-public class fragmentThu extends Fragment {
+
+    public lich() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_thu, container, false);
+        View view = inflater.inflate(R.layout.fragment_lich, container, false);
         // Inflate the layout for this fragment
+
         return view;
     }
 }

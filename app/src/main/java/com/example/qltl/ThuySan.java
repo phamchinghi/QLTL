@@ -1,24 +1,40 @@
 package com.example.qltl;
 
-public class ThuySan {
-    private int resourceId,tongKg,soTien;
+import java.io.Serializable;
+
+public class ThuySan implements Serializable {
+    private double tongKg,thanhTien,giaMua,giaBan;
     private String name,tenKH;
 
-    public ThuySan(int resourceId, String name, String tenKH, int tongKg, int soTien) {
-        this.resourceId = resourceId;
+    public ThuySan(double tongKg, double thanhTien, double giaMua, String name, String tenKH) {
+        this.tongKg = tongKg;
+        this.thanhTien = thanhTien;
+        this.giaMua = giaMua;
+        this.name = name;
+        this.tenKH = tenKH;
+    }
+
+    public ThuySan(String name, String tenKH, double tongKg, double thanhTien) {
         this.name = name;
         this.tenKH = tenKH;
         this.tongKg = tongKg;
-        this.soTien = soTien;
+        this.thanhTien = thanhTien;
     }
 
-
-    public int getResourceId() {
-        return resourceId;
+    public double getGiaMua() {
+        return giaMua;
     }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+    public void setGiaMua(double giaMua) {
+        this.giaMua = giaMua;
+    }
+
+    public double getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(double giaBan) {
+        this.giaBan = giaBan;
     }
 
     public String getName() {
@@ -37,7 +53,7 @@ public class ThuySan {
         this.tenKH = tenKH;
     }
 
-    public int getTongKg() {
+    public double getTongKg() {
         return tongKg;
     }
 
@@ -45,11 +61,11 @@ public class ThuySan {
         this.tongKg = tongKg;
     }
 
-    public int getSoTien() {
-        return soTien;
+    public double getthanhTien() {
+        return thanhTien;
     }
 
-    public void setSoTien(int soTien) {
-        this.soTien = soTien;
+    public void setthanhTien(int thanhTien) {
+        this.thanhTien = thanhTien;
     }
 }

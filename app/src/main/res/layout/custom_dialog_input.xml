@@ -94,6 +94,7 @@
             android:padding="10dp"
             android:background="@drawable/bg_edittext_dialog_in_output"
             android:layout_marginTop="5dp"
+            android:maxLength="8"
             />
         <EditText
             android:id="@+id/con_kg"

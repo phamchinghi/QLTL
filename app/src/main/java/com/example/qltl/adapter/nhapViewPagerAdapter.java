@@ -1,13 +1,15 @@
-package com.example.qltl.nhap;
+package com.example.qltl.adapter;
 
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.qltl.fragment.fragmentChi;
+import com.example.qltl.fragment.fragmentThu;
 
 public class nhapViewPagerAdapter extends FragmentStatePagerAdapter {
     public nhapViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
