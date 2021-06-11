@@ -10,20 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.qltl.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class fragmentChi extends Fragment {
+public class OnboardingFragment1 extends Fragment {
 
-    public fragmentChi() {
-        // Required empty public constructor
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chi, container, false);
         // Inflate the layout for this fragment
-        return view;
+        return inflater.inflate(R.layout.fragment_onboarding1, container, false);
     }
 }

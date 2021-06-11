@@ -59,8 +59,17 @@ public class IconThuySanAdapter extends RecyclerView.Adapter<IconThuySanAdapter.
                 String name = listIcon.get(position).getName();
                 switch (name){
                     case "Tôm":
+                    case "Sò":
                         customDialogg.createDialog();
-
+                        break;
+                    case "Cua":
+                    case "Cá":
+                    case "Nghêu":
+                    case "Mực":
+                        customDialogg.createDialogNoneConKg();
+                        break;
+                    default:
+                        break;
                 }
             }
         });

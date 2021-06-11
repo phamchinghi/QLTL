@@ -12,6 +12,8 @@
     <string name="thongbao">THÔNG BÁO</string>
     <string name="thongbaonhap">Vui lòng nhập thông tin cần tìm!</string>
     <string name="capnhat">Cập nhật</string>
+    <string name="lam_moi">Làm mới</string>
+    <string name="next">Tiếp</string>
     <string-array name="seafood">
         <item name="tom">Tôm</item>
         <item name="cua">Cua</item>

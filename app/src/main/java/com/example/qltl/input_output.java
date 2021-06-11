@@ -26,7 +26,7 @@ import com.example.qltl.ThuySan;
 import com.example.qltl.adapter.IconThuySanAdapter;
 
 import com.example.qltl.adapter.ThuySanAdapter;
-import com.example.qltl.adapter.nhapViewPagerAdapter;
+//import com.example.qltl.adapter.nhapViewPagerAdapter;
 import com.example.qltl.nhap.customDialog;
 import com.example.qltl.widget.customViewPager;
 import com.google.android.material.tabs.TabLayout;
@@ -46,8 +46,11 @@ public class input_output extends Fragment {
     ThuySan ts;
     Intent intent;
     customDialog customDialog;
-
+    Bundle bundle;
+    private RecyclerView rcv_icon;
+    private IconThuySanAdapter iconThuySanAdapter;
     List<ThuySan> list = new ArrayList<>();
+    View view;
     public input_output() {
     }
 
@@ -58,42 +61,58 @@ public class input_output extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_input_output, container, false);
 
-        tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager = view.findViewById(R.id.nhap_view_pager);
         btnList = view.findViewById(R.id.btnList);
         rcvThuySan = view.findViewById(R.id.recycle_view_thu);
-        nhapViewPagerAdapter adapterViewPager = new nhapViewPagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPager.setAdapter(adapterViewPager);
-        viewPager.setPagingEnable(false);
-        tabLayout.setupWithViewPager(viewPager);
+        rcv_icon = view.findViewById(R.id.rcv_ds_icon_thuysan);
+
+        iconThuySanAdapter = new IconThuySanAdapter(context);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
+        rcv_icon.setLayoutManager(gridLayoutManager);
+        iconThuySanAdapter.setData(setDataIcon());
+        rcv_icon.setAdapter(iconThuySanAdapter);
+
+        thuySanAdapter = new ThuySanAdapter(getContext());
+
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 initUI();
+                if (bundle == null){
+                    new customDialog(getContext()).createDialogThongbaoDienThongTin();
+                }
             }
         });
-
         return view;
     }
     private void initUI(){
         intent = getActivity().getIntent();
+        bundle = intent.getBundleExtra("objdata");
 
-        Bundle bundle = intent.getBundleExtra("objdata");
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+
         if(bundle != null){
             ts = (ThuySan) bundle.getSerializable("objTS");
-            thuySanAdapter = new ThuySanAdapter(getContext());
             list.add(ts);
             thuySanAdapter.setData(list);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
             rcvThuySan.setLayoutManager(linearLayoutManager);
             rcvThuySan.setAdapter(thuySanAdapter);
-//            bundle.clear();
+            bundle.remove("objTS");
         }else{
             new customDialog(getContext()).createDialogThongbaoDienThongTin();
         }
 
     }
 
+    private List<IconThuySan> setDataIcon(){
+        List<IconThuySan> listIcon = new ArrayList<>();
+        listIcon.add(new IconThuySan(R.drawable.ic_shrimp, "Tôm"));
+        listIcon.add(new IconThuySan(R.drawable.ic_crab, "Cua"));
+        listIcon.add(new IconThuySan(R.drawable.ic_fish, "Cá"));
+        listIcon.add(new IconThuySan(R.drawable.ic_clam, "Nghêu"));
+        listIcon.add(new IconThuySan(R.drawable.ic_shell, "Sò"));
+        listIcon.add(new IconThuySan(R.drawable.ic_octopus, "Mực"));
+        return listIcon;
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

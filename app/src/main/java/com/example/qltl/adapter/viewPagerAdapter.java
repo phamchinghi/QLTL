@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.qltl.CALENDAR.lich;
-import com.example.qltl.fragment.khac;
+import com.example.qltl.Khac.khac;
 import com.example.qltl.input_output;
 
 public class viewPagerAdapter extends FragmentStatePagerAdapter {

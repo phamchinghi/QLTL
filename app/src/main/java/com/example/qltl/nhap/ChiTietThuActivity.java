@@ -68,7 +68,6 @@ public class ChiTietThuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 senDataToFragmentThu();
-                bundle.clear();
             }
         });
 

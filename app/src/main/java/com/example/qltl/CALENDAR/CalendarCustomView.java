@@ -118,7 +118,7 @@ public class CalendarCustomView extends LinearLayout {
                                 SimpleDateFormat format = new SimpleDateFormat("K:mm a", Locale.ENGLISH);
                                 String PlannedTime = format.format(c.getTime());
                                 EventTime.setText(PlannedTime);
-                                alarmHour = c.get(Calendar.HOUR);
+                                alarmHour = c.get(Calendar.HOUR_OF_DAY);
                                 alarmMinuit = c.get(Calendar.MINUTE);
                             }
                         },hours,minuts,false);
@@ -139,7 +139,7 @@ public class CalendarCustomView extends LinearLayout {
                             Calendar calendar = Calendar.getInstance();
                             calendar.set(alarmYear,alarmMonth,alarmDay,alarmHour,alarmMinuit);
                             setAlarm(calendar,EventBody.getText().toString(),EventTime.getText().toString(),
-                                    getRequestCode(date,EventBody.getText().toString(),EventTime.getText().toString()));
+                            getRequestCode(date,EventBody.getText().toString(),EventTime.getText().toString()));
                             alertDialog.dismiss();
                         }else{
                             SaveEvent(EventBody.getText().toString(),EventTime.getText().toString(),date
@@ -197,7 +197,6 @@ public class CalendarCustomView extends LinearLayout {
         Cursor cursor = dbOpenHelper.ReadIDEvents(date,event,time,sqLiteDatabase);
         while (cursor.moveToNext()){
             code = cursor.getInt(cursor.getColumnIndex(DBStructure.ID));
-
         }
         cursor.close();
         dbOpenHelper.close();
