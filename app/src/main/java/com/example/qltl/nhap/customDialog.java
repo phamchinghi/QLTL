@@ -164,29 +164,29 @@ public class customDialog extends LinearLayout {
         btnYes.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edt_con_kg.getVisibility() == VISIBLE) {
-                    if (edt_khachHang.getText().toString().length() == 0
-                            || edtSdt.getText().toString().length() == 0
-                            || edtDiachi.getText().toString().length() == 0
-                            || edtLoai.getText().toString().length() == 0
-                            || edtGiaMua.getText().toString().length() == 0) {
-                        createDialogThongbaoDienThongTin();
-                    }else{
-                        //Goi cai activity moi ra
-                        Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
-
-                        Bundle bundle = new Bundle();
-                        bundle.putString("tenKH", edt_khachHang.getText().toString());
-                        bundle.putString("sdt", edtSdt.getText().toString());
-                        bundle.putString("diachi", edtDiachi.getText().toString());
-                        bundle.putDouble("gia", Double.parseDouble(edtGiaMua.getText().toString())); ;
-                        bundle.putString("loai", edtLoai.getText().toString());
-
-                        intent.putExtra("data", bundle);
-                        getContext().startActivity(intent);
-                        alertDialog.dismiss();
-                    }
-                }else {
+//                if(edt_con_kg.getVisibility() == VISIBLE) {
+//                    if (edt_khachHang.getText().toString().length() == 0
+//                            || edtSdt.getText().toString().length() == 0
+//                            || edtDiachi.getText().toString().length() == 0
+//                            || edtLoai.getText().toString().length() == 0
+//                            || edtGiaMua.getText().toString().length() == 0) {
+//                        createDialogThongbaoDienThongTin();
+//                    }else{
+//                        //Goi cai activity moi ra
+//                        Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
+//
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("tenKH", edt_khachHang.getText().toString());
+//                        bundle.putString("sdt", edtSdt.getText().toString());
+//                        bundle.putString("diachi", edtDiachi.getText().toString());
+//                        bundle.putDouble("gia", Double.parseDouble(edtGiaMua.getText().toString())); ;
+//                        bundle.putString("loai", edtLoai.getText().toString());
+//
+//                        intent.putExtra("data", bundle);
+//                        getContext().startActivity(intent);
+//                        alertDialog.dismiss();
+//                    }
+//                }else {
                     if(edt_khachHang.getText().toString().length() == 0
                             || edtSdt.getText().toString().length() == 0
                             || edtDiachi.getText().toString().length() == 0
@@ -208,7 +208,7 @@ public class customDialog extends LinearLayout {
                         alertDialog.dismiss();
                     }
                 }
-            }
+//            }
         });
     }
 
