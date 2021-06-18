@@ -49,7 +49,15 @@ public class ChiTietThuActivity extends AppCompatActivity {
     Database database;
     Cursor getSQL;
     private static final String createTable_KH = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_KH+"("+DBStructure.MAKH+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENKH+" NVARCHAR(30), "+DBStructure.SDT+" VARCHAR(10), "+DBStructure.DIACHI+" NVARCHAR(50))";
-
+    private static final String createTable_TS = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_TS+"("+DBStructure.MATS+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENTS+" NVARCHAR(30))";
+    private static final String createTable_PHIEUMUA = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAPM+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.MAKH_PM+" NVARCHAR(30),  FOREIGN KEY ("+DBStructure.MAKH_PM+")"+" REFERENCES "+DBStructure.TABLE_KH+"("+DBStructure.MAKH+"))";
+    private static final String createTable_CTMUA = "CREATE TABLE IF NOT EXISTS "+DBStructure.TABLE_CTMUA+"("
+            +DBStructure.MAPM_CTPM+" INTEGER, "
+            +DBStructure.MATS_CTPM+" INTEGER, "
+            +DBStructure.GIAMUA+" VARCHAR(8), "
+            +DBStructure.DVT+" TEXT, "
+            +DBStructure.SOKG+" TEXT, FOREIGN KEY ("+DBStructure.MAPM_CTPM+") "+" REFERENCES "+DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAPM+")," +
+            "FOREIGN KEY ("+DBStructure.MATS_CTPM+") "+" REFERENCES "+DBStructure.TABLE_TS+"("+DBStructure.MATS+"))";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +84,13 @@ public class ChiTietThuActivity extends AppCompatActivity {
 
         database = new Database(getApplicationContext(), DBStructure.DB_NAME, null,DBStructure.DB_VERSION);
         database.QueryData(createTable_KH);
+        database.QueryData(createTable_TS);
+        database.QueryData(createTable_PHIEUMUA);
+        database.QueryData(createTable_CTMUA);
+
         String insertTable_KH = "INSERT INTO "+DBStructure.TABLE_KH + "(" +DBStructure.MAKH+","+DBStructure.TENKH+","+DBStructure.SDT+","+DBStructure.DIACHI+ ")"+
                 " VALUES("+null+", '"+tenKH.toLowerCase()+"', '"+sdt+"', '"+diaChi+"')";
+        String insertTable_Can = "";
         database.QueryData(insertTable_KH);
 
 //        getSQL = database.getData("SELECT * FROM "+DBStructure.TABLE_KH);

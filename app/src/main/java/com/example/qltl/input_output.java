@@ -48,7 +48,6 @@ public class input_output extends Fragment {
     private RecyclerView rcv_icon;
     private IconThuySanAdapter iconThuySanAdapter;
     List<ThuySan> list = new ArrayList<>();
-    private static final String createTable_KH = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_TS+"("+DBStructure.MATS+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENTS+" NVARCHAR(30))";
 
     public input_output() {
     }

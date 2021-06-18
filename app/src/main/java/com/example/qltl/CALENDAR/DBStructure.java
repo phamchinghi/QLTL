@@ -22,4 +22,23 @@ public class DBStructure {
     public static final String MATS = "mathuysan";
     public static final String TENTS = "tenthuysan";
 
+    public static final String TABLE_PHIEUMUA = "phieumua";
+    public static final String MAPM = "mapm";
+    public static final String MAKH_PM = "makh";
+
+    public static final String TABLE_CTMUA = "ctmua";
+    public static final String MAPM_CTPM = "mapm";
+    public static final String MATS_CTPM = "mats";
+    public static final String DVT = "dvt";
+    public static final String GIAMUA = "giamua";
+    public static final String SOKG = "sokgmoilancan";
+
+    public static final String TABLE_THONGKE = "thongke";
+    public static final String SOPHIEUTK = "sophieutk";
+    public static final String MAPM_TK = "mapm";
+    public static final String MAKH_TK = "makh";
+    public static final String MATS_TK = "mathuysan";
+    public static final String GIAMUA_TK = "giamua";
+    public static final String TONGKG = "tongkg";
+    public static final String THANHTIEN = "thanhtien";
 }
