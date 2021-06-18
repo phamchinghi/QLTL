@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 
+import com.example.qltl.CALENDAR.DBStructure;
 import com.example.qltl.IconThuySan;
 import com.example.qltl.R;
 import com.example.qltl.ThuySan;
@@ -38,19 +39,17 @@ import java.util.List;
 public class input_output extends Fragment {
 
     Context context;
-    private TabLayout tabLayout;
-    private customViewPager viewPager;
     private RecyclerView rcvThuySan;
     ThuySanAdapter thuySanAdapter;
     private Button btnList;
     ThuySan ts;
     Intent intent;
-    customDialog customDialog;
     Bundle bundle;
     private RecyclerView rcv_icon;
     private IconThuySanAdapter iconThuySanAdapter;
     List<ThuySan> list = new ArrayList<>();
-    View view;
+    private static final String createTable_KH = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_TS+"("+DBStructure.MATS+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENTS+" NVARCHAR(30))";
+
     public input_output() {
     }
 
@@ -96,7 +95,7 @@ public class input_output extends Fragment {
             thuySanAdapter.setData(list);
             rcvThuySan.setLayoutManager(linearLayoutManager);
             rcvThuySan.setAdapter(thuySanAdapter);
-            bundle.remove("objTS");
+
         }else{
             new customDialog(getContext()).createDialogThongbaoDienThongTin();
         }

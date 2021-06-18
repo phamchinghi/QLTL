@@ -6,14 +6,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.qltl.CALENDAR.DBStructure;
 import com.example.qltl.ChiTietCan;
+import com.example.qltl.DB.Database;
 import com.example.qltl.MainActivity;
 import com.example.qltl.adapter.ChiTietcanAdapter;
 import com.example.qltl.R;
@@ -42,6 +46,10 @@ public class ChiTietThuActivity extends AppCompatActivity {
     Context context;
     Intent intent;
     Bundle bundle;
+    Database database;
+    Cursor getSQL;
+    private static final String createTable_KH = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_KH+"("+DBStructure.MAKH+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENKH+" NVARCHAR(30), "+DBStructure.SDT+" VARCHAR(10), "+DBStructure.DIACHI+" NVARCHAR(50))";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +70,21 @@ public class ChiTietThuActivity extends AppCompatActivity {
         String tenKH = bundle.getString("tenKH");
         String loaiTS = bundle.getString("loai");
         double giaMua = bundle.getDouble("gia");
+        String sdt = bundle.getString("sdt");
+        String diaChi = bundle.getString("diachi");
         int conKg = bundle.getInt("conkg");
 
+        database = new Database(getApplicationContext(), DBStructure.DB_NAME, null,DBStructure.DB_VERSION);
+        database.QueryData(createTable_KH);
+        String insertTable_KH = "INSERT INTO "+DBStructure.TABLE_KH + "(" +DBStructure.MAKH+","+DBStructure.TENKH+","+DBStructure.SDT+","+DBStructure.DIACHI+ ")"+
+                " VALUES("+null+", '"+tenKH.toLowerCase()+"', '"+sdt+"', '"+diaChi+"')";
+        database.QueryData(insertTable_KH);
+
+//        getSQL = database.getData("SELECT * FROM "+DBStructure.TABLE_KH);
+//        while (getSQL.moveToNext()){
+//            String ten = getSQL.getString(1);
+//            Toast.makeText(getApplicationContext(), ten, Toast.LENGTH_SHORT).show();
+//        }
         ibtn_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

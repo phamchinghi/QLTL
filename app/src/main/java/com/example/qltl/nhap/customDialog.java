@@ -19,6 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.qltl.CALENDAR.DBOpenHelper;
+import com.example.qltl.CALENDAR.DBStructure;
+import com.example.qltl.DB.Database;
 import com.example.qltl.R;
 import com.example.qltl.adapter.IconThuySanAdapter;
 
@@ -34,7 +37,7 @@ public class customDialog extends LinearLayout {
     private  Button btnYes;
     private Button btnThongBao;
     Context context;
-    IconThuySanAdapter iconThuySanAdapter;
+    Database database;
 
     public customDialog(Context context) {
         super(context);
@@ -44,6 +47,7 @@ public class customDialog extends LinearLayout {
         super(context, attrs);
         this.context = context1;
         IntializeUILayout();
+
     }
 
     private void IntializeUILayout(){
@@ -62,6 +66,8 @@ public class customDialog extends LinearLayout {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         ViewGroup viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.custom_dialog_input, viewGroup, false);
+        database = new Database(context, DBStructure.DB_NAME, null, DBStructure.DB_VERSION);
+
         edt_khachHang = dialogView.findViewById(R.id.edt_ten);
         edtLoai = dialogView.findViewById(R.id.edt_loai);
         edtGiaMua = dialogView.findViewById(R.id.edt_gia_mua);
@@ -72,12 +78,13 @@ public class customDialog extends LinearLayout {
         btnYes = dialogView.findViewById(R.id.btn_yes);
 
 
+
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
         alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
-//        edt_con_kg.setVisibility(GONE);
+
         btnCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,6 +162,7 @@ public class customDialog extends LinearLayout {
         alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
+
         btnCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
