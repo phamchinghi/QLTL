@@ -70,7 +70,6 @@ public class input_output extends Fragment {
         rcv_icon.setAdapter(iconThuySanAdapter);
 
         thuySanAdapter = new ThuySanAdapter(getContext());
-
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +93,7 @@ public class input_output extends Fragment {
             thuySanAdapter.setData(list);
             rcvThuySan.setLayoutManager(linearLayoutManager);
             rcvThuySan.setAdapter(thuySanAdapter);
-
+            bundle.remove("objTS");
         }else{
             new customDialog(getContext()).createDialogThongbaoDienThongTin();
         }

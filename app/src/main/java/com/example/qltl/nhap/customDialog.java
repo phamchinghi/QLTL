@@ -38,6 +38,9 @@ public class customDialog extends LinearLayout {
     private Button btnThongBao;
     Context context;
     Database database;
+    private int maKH = 1;
+    private int maPM = 1;
+    private int maTS = 1;
 
     public customDialog(Context context) {
         super(context);
@@ -77,14 +80,11 @@ public class customDialog extends LinearLayout {
         btnCancel = dialogView.findViewById(R.id.btn_cancel);
         btnYes = dialogView.findViewById(R.id.btn_yes);
 
-
-
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
         alertDialog.setCancelable(Gravity.BOTTOM == getGravity());
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_in_output);
         alertDialog.show();
-
         btnCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +107,9 @@ public class customDialog extends LinearLayout {
                         Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
 
                         Bundle bundle = new Bundle();
+                        bundle.putInt("maKH", maKH);
+                        bundle.putInt("maPM", maPM);
+                        bundle.putInt("maTS", maTS);
                         bundle.putString("tenKH", edt_khachHang.getText().toString());
                         bundle.putString("sdt", edtSdt.getText().toString());
                         bundle.putString("diachi", edtDiachi.getText().toString());
@@ -129,6 +132,9 @@ public class customDialog extends LinearLayout {
                         //goi cai activity moi ra
                         Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
                         Bundle bundle = new Bundle();
+                        bundle.putInt("maKH", maKH);
+                        bundle.putInt("maPM", maPM);
+                        bundle.putInt("maTS", maTS);
                         bundle.putString("tenKH", edt_khachHang.getText().toString());
                         bundle.putDouble("gia", Double.parseDouble(edtGiaMua.getText().toString()));
                         bundle.putString("sdt", edtSdt.getText().toString());
@@ -140,8 +146,12 @@ public class customDialog extends LinearLayout {
                         alertDialog.dismiss();
                     }
                 }
+                maKH++;
+                maPM++;
+                maTS++;
             }
         });
+
     }
 
     public void createDialogNoneConKg(){
@@ -182,6 +192,9 @@ public class customDialog extends LinearLayout {
                         //goi cai activity moi ra
                         Intent intent = new Intent(getContext(), ChiTietThuActivity.class);
                         Bundle bundle = new Bundle();
+                        bundle.putInt("maKH", maKH);
+                        bundle.putInt("maPM", maPM);
+                        bundle.putInt("maTS", maTS);
                         bundle.putString("tenKH", edt_khachHang.getText().toString());
                         bundle.putDouble("gia", Double.parseDouble(edtGiaMua.getText().toString()));
                         bundle.putString("sdt", edtSdt.getText().toString());
@@ -192,6 +205,9 @@ public class customDialog extends LinearLayout {
                         getContext().startActivity(intent);
                         alertDialog.dismiss();
                     }
+                maKH++;
+                maPM++;
+                maTS++;
                 }
 //            }
         });

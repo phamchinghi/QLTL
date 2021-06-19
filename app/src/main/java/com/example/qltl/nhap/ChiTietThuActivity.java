@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,17 +48,30 @@ public class ChiTietThuActivity extends AppCompatActivity {
     Intent intent;
     Bundle bundle;
     Database database;
-    Cursor getSQL;
+    Cursor getSQLKH,getSQLTS,getSQLPM,getSQLCTMUA;
     private static final String createTable_KH = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_KH+"("+DBStructure.MAKH+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENKH+" NVARCHAR(30), "+DBStructure.SDT+" VARCHAR(10), "+DBStructure.DIACHI+" NVARCHAR(50))";
-    private static final String createTable_TS = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_TS+"("+DBStructure.MATS+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENTS+" NVARCHAR(30))";
+    private static final String createTable_TS = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_TS+"("+DBStructure.MATS+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.TENTS+" NVARCHAR(30)," +DBStructure.GIAMUA+" VARCHAR(8))";
     private static final String createTable_PHIEUMUA = "CREATE TABLE IF NOT EXISTS "+ DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAPM+" INTEGER PRIMARY KEY AUTOINCREMENT, "+DBStructure.MAKH_PM+" NVARCHAR(30),  FOREIGN KEY ("+DBStructure.MAKH_PM+")"+" REFERENCES "+DBStructure.TABLE_KH+"("+DBStructure.MAKH+"))";
     private static final String createTable_CTMUA = "CREATE TABLE IF NOT EXISTS "+DBStructure.TABLE_CTMUA+"("
             +DBStructure.MAPM_CTPM+" INTEGER, "
+            +DBStructure.MAKH_CTPM+" INTEGER, "
             +DBStructure.MATS_CTPM+" INTEGER, "
-            +DBStructure.GIAMUA+" VARCHAR(8), "
             +DBStructure.DVT+" TEXT, "
-            +DBStructure.SOKG+" TEXT, FOREIGN KEY ("+DBStructure.MAPM_CTPM+") "+" REFERENCES "+DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAPM+")," +
+            +DBStructure.SOKG+" TEXT, " +
+            "FOREIGN KEY ("+DBStructure.MAKH_CTPM+") "+" REFERENCES "+DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAKH_PM+"),"+
+            "FOREIGN KEY ("+DBStructure.MAPM_CTPM+") "+" REFERENCES "+DBStructure.TABLE_PHIEUMUA+"("+DBStructure.MAPM+")," +
             "FOREIGN KEY ("+DBStructure.MATS_CTPM+") "+" REFERENCES "+DBStructure.TABLE_TS+"("+DBStructure.MATS+"))";
+    private static final String createTable_TK = "CREATE TABLE IF NOT EXISTS "+DBStructure.TABLE_THONGKE+"("
+            +DBStructure.SOPHIEUTK+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +DBStructure.MAPM_TK+" INTEGER, "
+            +DBStructure.MAKH_TK+" INTEGER, "
+            +DBStructure.MATS_TK+" INTEGER, "
+            +DBStructure.GIAMUA_TK+" VARCHAR(8), "
+            +DBStructure.TONGKG+" TEXT,"
+            +DBStructure.THANHTIEN+" TEXT, " +
+            "FOREIGN KEY ("+DBStructure.MAPM_TK+") "+" REFERENCES "+DBStructure.TABLE_CTMUA+"("+DBStructure.MAPM_CTPM+"),"+
+            "FOREIGN KEY ("+DBStructure.MAKH_TK+") "+" REFERENCES "+DBStructure.TABLE_CTMUA+"("+DBStructure.MAKH_CTPM+"),"+
+            "FOREIGN KEY ("+DBStructure.MATS_TK+") "+" REFERENCES "+DBStructure.TABLE_CTMUA+"("+DBStructure.MATS_CTPM+"))";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +89,9 @@ public class ChiTietThuActivity extends AppCompatActivity {
         intent = getIntent();
         bundle = intent.getBundleExtra("data");
         bundle.getBundle("data");
+        int makh = bundle.getInt("maKH");
+        int mapm = bundle.getInt("maPM");
+        int maTS = bundle.getInt("maTS");
         String tenKH = bundle.getString("tenKH");
         String loaiTS = bundle.getString("loai");
         double giaMua = bundle.getDouble("gia");
@@ -83,21 +100,38 @@ public class ChiTietThuActivity extends AppCompatActivity {
         int conKg = bundle.getInt("conkg");
 
         database = new Database(getApplicationContext(), DBStructure.DB_NAME, null,DBStructure.DB_VERSION);
+
+//        database.QueryData("DROP TABLE "+DBStructure.TABLE_KH);
+//        database.QueryData("DROP TABLE "+DBStructure.TABLE_TS);
+//        database.QueryData("DROP TABLE "+DBStructure.TABLE_PHIEUMUA);
+//        database.QueryData("DROP TABLE "+DBStructure.TABLE_CTMUA);
+//        database.QueryData("DROP TABLE "+DBStructure.TABLE_THONGKE);
+
+
         database.QueryData(createTable_KH);
         database.QueryData(createTable_TS);
         database.QueryData(createTable_PHIEUMUA);
         database.QueryData(createTable_CTMUA);
-
+        database.QueryData(createTable_TK);
         String insertTable_KH = "INSERT INTO "+DBStructure.TABLE_KH + "(" +DBStructure.MAKH+","+DBStructure.TENKH+","+DBStructure.SDT+","+DBStructure.DIACHI+ ")"+
-                " VALUES("+null+", '"+tenKH.toLowerCase()+"', '"+sdt+"', '"+diaChi+"')";
-        String insertTable_Can = "";
-        database.QueryData(insertTable_KH);
+                " VALUES("+makh+", '"+tenKH+"', '"+sdt+"', '"+diaChi+"')";
+        String insertTable_TS = "INSERT INTO "+DBStructure.TABLE_TS+"("+DBStructure.MATS+", "+DBStructure.TENTS+", "+DBStructure.GIAMUA+")" +
+                "VALUES( "+maTS+", '"+loaiTS+"', '"+giaMua+"')";
 
-//        getSQL = database.getData("SELECT * FROM "+DBStructure.TABLE_KH);
-//        while (getSQL.moveToNext()){
-//            String ten = getSQL.getString(1);
-//            Toast.makeText(getApplicationContext(), ten, Toast.LENGTH_SHORT).show();
-//        }
+        database.QueryData(insertTable_KH);
+        database.QueryData(insertTable_TS);
+
+        getSQLKH = database.getData("SELECT * FROM "+DBStructure.TABLE_KH);
+        getSQLTS = database.getData("SELECT * FROM "+DBStructure.TABLE_TS);
+        while (getSQLKH.moveToNext()) {
+            int maKH = getSQLKH.getInt(0);
+            String insertTable_PM = "INSERT INTO " + DBStructure.TABLE_PHIEUMUA + "(" + DBStructure.MAPM + "," + DBStructure.MAKH_PM + ")" +
+                    "VALUES (" + mapm + "," + maKH + ")";
+            database.QueryData(insertTable_PM);
+        }
+        getSQLPM = database.getData("SELECT * FROM "+DBStructure.TABLE_PHIEUMUA);
+
+
         ibtn_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,22 +152,27 @@ public class ChiTietThuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(edtSokg.getText().toString().length()!=0) {
+                    String sokg = edtSokg.getText().toString();
                     chiTietcanAdapter = new ChiTietcanAdapter(context);
                     listcan.add(new ChiTietCan(id, Float.parseFloat(edtSokg.getText().toString())));
                     chiTietcanAdapter.setData(listcan);
                     txtTongKg.setText(caculateKhoiLuong().toString());
-                    edtSokg.setText("");
-                    edtSokg.setHint("Nhập số kg");
-
                     id++;
 
+                    String insertTable_CTMUA = "INSERT INTO "+DBStructure.TABLE_CTMUA+"("+DBStructure.MAPM_CTPM+", "+DBStructure.MAKH_CTPM+", "+DBStructure.MATS_CTPM+", "+DBStructure.DVT+", "+DBStructure.SOKG+")"+
+                            "VALUES("+mapm+", "+makh+", "+maTS+", "+null+","+sokg+")";
+                    getSQLCTMUA = database.getData("SELECT * FROM "+DBStructure.TABLE_CTMUA);
+                    database.QueryData(insertTable_CTMUA);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
                     rcvChiTietCan.setLayoutManager(linearLayoutManager);
 
                     rcvChiTietCan.setHasFixedSize(true);
                     rcvChiTietCan.setAdapter(chiTietcanAdapter);
+                    edtSokg.setText("");
+                    edtSokg.setHint("Nhập số kg");
+                    Toast.makeText(getApplicationContext(), getSQLCTMUA.getString(4), Toast.LENGTH_SHORT).show();
                 }else {
-
+                    new customDialog(getApplicationContext()).createDialogThongbaoDienThongTin();
                 }
             }
         });

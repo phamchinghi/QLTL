@@ -1,7 +1,7 @@
 package com.example.qltl.CALENDAR;
 
 public class DBStructure {
-    public static final String DB_NAME = "QLTL";
+    public static final String DB_NAME = "QLTL.sqlite";
     public static final int DB_VERSION = 2;
     public static final String EVENT_TABLE_NAME="eventstable" ;
     public static final String EVENT = "event";
@@ -21,16 +21,17 @@ public class DBStructure {
     public static final String TABLE_TS = "thuysan";
     public static final String MATS = "mathuysan";
     public static final String TENTS = "tenthuysan";
+    public static final String GIAMUA = "giamua";
 
     public static final String TABLE_PHIEUMUA = "phieumua";
     public static final String MAPM = "mapm";
     public static final String MAKH_PM = "makh";
 
     public static final String TABLE_CTMUA = "ctmua";
+    public static final String MAKH_CTPM = "makh";
     public static final String MAPM_CTPM = "mapm";
     public static final String MATS_CTPM = "mats";
     public static final String DVT = "dvt";
-    public static final String GIAMUA = "giamua";
     public static final String SOKG = "sokgmoilancan";
 
     public static final String TABLE_THONGKE = "thongke";
